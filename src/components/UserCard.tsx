@@ -121,9 +121,9 @@ const UserCard: React.VFC = () => {
 							<img src={defaultAvatar} alt="user avatar" />
 						</div>
 					</div>
-					dim has {manyFollow} follower
+					dim has {manyFollow} followers
 				</h3>
-				<p>my hobby is playing csgo</p>
+				<p>my hobby is karaoke</p>
 				<div className="card-actions">
 					<button className={btnStyle} onClick={handleFollowBtn}>
 						{followBtn}
