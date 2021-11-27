@@ -3,7 +3,7 @@ import { createContext, ReactNode, useEffect, useState } from "react";
 import { auth } from "../../firebase";
 
 type AuthCtxProps = {
-	currentUser: User | null;
+	currentUser: User | null | undefined;
 };
 
 type AuthProviderProps = {
@@ -13,7 +13,7 @@ type AuthProviderProps = {
 const AuthCtx = createContext<AuthCtxProps>({ currentUser: null });
 
 const AuthProvider: React.VFC<AuthProviderProps> = ({ children }) => {
-	const [currentUser, setCurrentUser] = useState<User | null>(null);
+	const [currentUser, setCurrentUser] = useState<User | null | undefined>(undefined);
 
 	useEffect(() => {
 		auth.onAuthStateChanged((user) => {
