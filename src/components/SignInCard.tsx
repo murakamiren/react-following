@@ -1,4 +1,4 @@
-import SignInForm from "./Forms/SignInForm";
+import SignInForm from "./forms/SignInForm";
 
 const SignInCard: React.VFC = () => {
 	return (
