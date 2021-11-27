@@ -43,6 +43,7 @@ const SignInForm: React.VFC = () => {
 			<input type="password" name="password" className="input" placeholder="password" onChange={handlePs} />
 			<div className="card-actions justify-end">
 				<button className="btn btn-outline">SIGN IN</button>
+				<div className="divider divider-vertical">OR</div>
 				<Link to="/signup">
 					<button className="btn btn-ghost">SIGN UP</button>
 				</Link>
