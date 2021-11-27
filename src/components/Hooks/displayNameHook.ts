@@ -9,14 +9,15 @@ export const useDisplayName = () => {
 
 	useEffect(() => {
 		if (currentUser) {
-			const docRef = doc(firestore, "user", currentUser.uid);
+			const docRef = doc(firestore, "users", currentUser.uid);
 			const docSnap = getDoc(docRef);
 			docSnap
 				.then((d) => {
-					return d.data;
+					// console.log(d.data());
+					return d.data();
 				})
 				.then((ud: any) => {
-					setUsername(ud.displayName);
+					setUsername(() => ud.displayName);
 				});
 		}
 	}, [currentUser]);

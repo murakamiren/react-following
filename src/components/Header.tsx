@@ -16,7 +16,9 @@ const Header: React.VFC = () => {
 			<div className="justify-end px-2 mx-2">
 				{currentUser ? (
 					<Fragment>
-						<p>Whats Up! {displayName}!</p>
+						<p>
+							Whats Up! <span className="text-accent">{displayName}!</span>
+						</p>
 						<button className="btn btn-outline btn-sm ml-2" onClick={logOut}>
 							SIGN OUT
 						</button>
