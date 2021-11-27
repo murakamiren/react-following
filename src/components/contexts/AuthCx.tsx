@@ -25,4 +25,4 @@ const AuthProvider: React.VFC<AuthProviderProps> = ({ children }) => {
 	return <AuthCtx.Provider value={{ currentUser }}>{children}</AuthCtx.Provider>;
 };
 
-export default AuthProvider;
+export { AuthProvider, AuthCtx };
