@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthCtx } from "./contexts/AuthCx";
 import logOut from "./feartures/logout";
 import { useDisplayName } from "./Hooks/displayNameHook";
+import defaultAvatar from "../assets/img/blank-profile-picture-g7424d4f97_1280.png";
 
 const Header: React.VFC = () => {
 	const { currentUser } = useContext(AuthCtx);
@@ -17,8 +18,13 @@ const Header: React.VFC = () => {
 				{currentUser ? (
 					<Fragment>
 						<p>
-							Whats Up! <span className="text-accent">{displayName}!</span>
+							Whats Up! <span className="text-accent">{displayName}</span>!
 						</p>
+						<div className="avatar">
+							<div className="rounded-full w-10 h-10 mx-3 shadow">
+								<img src={defaultAvatar} alt="user avatar" />
+							</div>
+						</div>
 						<button className="btn btn-outline btn-sm ml-2" onClick={logOut}>
 							SIGN OUT
 						</button>
