@@ -1,9 +1,12 @@
 import { createUserWithEmailAndPassword } from "@firebase/auth";
 import { doc, setDoc } from "@firebase/firestore";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { auth, firestore } from "../../firebase";
 
 const SignUpForm: React.VFC = () => {
+	const navigate = useNavigate();
+
 	const [email, setEmail] = useState("");
 	const [ps, setPs] = useState("");
 	const [username, setUsername] = useState("");
@@ -34,6 +37,9 @@ const SignUpForm: React.VFC = () => {
 					userId: ud.uid,
 				});
 				console.log(`create account ${username}`);
+			})
+			.then(() => {
+				navigate("/");
 			})
 			.catch((e) => {
 				alert(e.message);
