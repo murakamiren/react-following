@@ -25,13 +25,13 @@ const UserCard: React.VFC = () => {
 			if (docSnap.exists()) {
 				const follow = docSnap.data()[targetUser.uid];
 				if (follow) {
-					await setDoc(docRef, {
+					await updateDoc(docRef, {
 						[targetUser.uid]: false,
 					});
 					setIsFollow(() => false);
 					console.log(`you unfollowed ${targetUser.username}`);
 				} else if (!follow) {
-					await setDoc(docRef, {
+					await updateDoc(docRef, {
 						[targetUser.uid]: true,
 					});
 					setIsFollow(() => true);
