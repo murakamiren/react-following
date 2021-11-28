@@ -12,13 +12,18 @@ const Header: React.VFC = () => {
 	return (
 		<div className="navbar mb-2 shadow-lg bg-neutral text-neutral-content">
 			<div className="flex-1 px-2 mx-2">
-				<span className="text-lg font-bold">React Follow</span>
+				<Link to="/">
+					<span className="text-lg font-bold">React Follow</span>
+				</Link>
 			</div>
 			<div className="justify-end px-2 mx-2">
 				{currentUser ? (
 					<Fragment>
 						<p>
-							Whats Up! <span className="text-accent">{displayName}</span>!
+							Whats Up!
+							<Link to="/userprofile">
+								<span className="text-accent">{displayName}</span>!
+							</Link>
 						</p>
 						<div className="avatar">
 							<div className="rounded-full w-10 h-10 mx-3 shadow">
