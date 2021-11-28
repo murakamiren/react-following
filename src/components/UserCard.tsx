@@ -4,15 +4,21 @@ import defaultAvatar from "../assets/img/blank-profile-picture-g7424d4f97_1280.p
 import { firestore } from "../firebase";
 import { AuthCtx } from "./contexts/AuthCx";
 
-const UserCard: React.VFC = () => {
+type UserCardProps = {
+	uid: string;
+	username: string;
+	hobby: string;
+};
+
+const UserCard: React.VFC<UserCardProps> = ({ uid, username, hobby }) => {
 	const [manyFollow, setManyFollow] = useState(0);
 	const [followBtn, setFollowBtn] = useState("");
 	const [btnStyle, setBtnStyle] = useState("");
 	const [isFollow, setIsFollow] = useState(Boolean);
 	const { currentUser } = useContext(AuthCtx);
 	const targetUser = {
-		uid: "cfC9SSsuXHMbIBM5NuXPJFEGK792",
-		username: "dim",
+		uid: uid,
+		username: username,
 	};
 
 	const btnFollowed = "btn btn-accent btn-sm btn-outline";
@@ -107,9 +113,27 @@ const UserCard: React.VFC = () => {
 		setTimeout(handleManyFollow, 500);
 	};
 
+	const initialIsFollowQuery = async () => {
+		if (currentUser) {
+			const docRef = doc(firestore, "following", currentUser.uid);
+			const docSnap = await getDoc(docRef);
+			if (docSnap.exists()) {
+				const follow = docSnap.data()[targetUser.uid];
+				if (follow) {
+					setIsFollow(() => true);
+				} else if (!follow) {
+					setIsFollow(() => false);
+				}
+			} else if (!docSnap.exists()) {
+				setIsFollow(() => false);
+			}
+		}
+	};
+
 	useEffect(() => {
 		followEffect();
 		manyFollowDelay();
+		initialIsFollowQuery();
 	}, [isFollow]);
 
 	return (
@@ -121,9 +145,9 @@ const UserCard: React.VFC = () => {
 							<img src={defaultAvatar} alt="user avatar" />
 						</div>
 					</div>
-					dim has {manyFollow} followers
+					{username} has {manyFollow} followers
 				</h3>
-				<p>my hobby is karaoke</p>
+				<p>my hobby is {hobby}</p>
 				<div className="card-actions">
 					<button className={btnStyle} onClick={handleFollowBtn}>
 						{followBtn}

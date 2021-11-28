@@ -22,7 +22,7 @@ const Header: React.VFC = () => {
 						<p>
 							Whats Up!
 							<Link to="/userprofile">
-								<span className="text-accent">{displayName}</span>!
+								<span className="text-accent ml-2">{displayName}</span>!
 							</Link>
 						</p>
 						<div className="avatar">
