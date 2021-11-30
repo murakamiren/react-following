@@ -2,7 +2,6 @@ import { Fragment, useContext } from "react";
 import { AuthCtx } from "../components/contexts/AuthCx";
 import Header from "../components/Header";
 import UserCard from "../components/UserCard";
-// import UserFeed from "../components/UserFeed";
 
 const HomePage: React.VFC = () => {
 	const { currentUser } = useContext(AuthCtx);

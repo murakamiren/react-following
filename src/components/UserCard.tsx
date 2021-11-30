@@ -133,8 +133,11 @@ const UserCard: React.VFC<UserCardProps> = ({ uid, username, hobby }) => {
 	useEffect(() => {
 		followEffect();
 		manyFollowDelay();
-		initialIsFollowQuery();
 	}, [isFollow]);
+
+	useEffect(() => {
+		initialIsFollowQuery();
+	}, []);
 
 	return (
 		<div className="card lg:card-side bordered shadow-lg mt-8 w-9/12">
